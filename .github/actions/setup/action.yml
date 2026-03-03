@@ -3,14 +3,10 @@ description: "Sets up Node.js, pnpm, and installs dependencies"
 inputs:
   node-version:
     description: "Node.js version"
-    default: "24"
+    default: "lts/*"
     required: false
   pnpm-version:
     description: "pnpm version (defaults to packageManager in package.json)"
-    required: false
-  registry-url:
-    description: "Registry URL for publishing"
-    default: "https://registry.npmjs.org"
     required: false
 
 runs:
@@ -28,7 +24,6 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: "pnpm"
-        registry-url: ${{ inputs.registry-url }}
 
     - name: Install dependencies
       shell: bash
