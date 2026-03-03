@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { type PluralForms, pluralize } from "../src";
+import { type PluralForms, pluralize } from "../src/index.js";
 import assert from "node:assert/strict";
 
 describe("pluralize", () => {

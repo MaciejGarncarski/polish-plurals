@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { getPluralForm, type PluralForms } from "../src";
+import { getPluralForm, type PluralForms } from "../src/index.js";
 import assert from "node:assert/strict";
 
 describe("getPluralForm", () => {
@@ -8,43 +8,51 @@ describe("getPluralForm", () => {
   describe("should return correct plural form for various counts", () => {
     it("should return correct plural form for 0", () => {
       const result = getPluralForm(0, forms);
-
       assert.strictEqual(result, "jabłek");
     });
 
     it("should return correct plural form for 1", () => {
       const result = getPluralForm(1, forms);
-
       assert.strictEqual(result, "jabłko");
     });
 
     it("should return correct plural form for 2", () => {
       const result = getPluralForm(2, forms);
-
       assert.strictEqual(result, "jabłka");
     });
 
     it("should return correct plural form for 5", () => {
       const result = getPluralForm(5, forms);
-
       assert.strictEqual(result, "jabłek");
     });
 
     it("should return correct plural form for 11", () => {
       const result = getPluralForm(11, forms);
-
       assert.strictEqual(result, "jabłek");
+    });
+
+    it("should return correct plural form for 22", () => {
+      const result = getPluralForm(22, forms);
+      assert.strictEqual(result, "jabłka");
+    });
+
+    it("should return correct plural form for 23", () => {
+      const result = getPluralForm(23, forms);
+      assert.strictEqual(result, "jabłka");
+    });
+
+    it("should return correct plural form for 24", () => {
+      const result = getPluralForm(24, forms);
+      assert.strictEqual(result, "jabłka");
     });
 
     it("should return correct plural form for Infinity", () => {
       const result = getPluralForm(Infinity, forms);
-
       assert.strictEqual(result, "jabłek");
     });
 
     it("should return correct plural form for NaN", () => {
       const result = getPluralForm(NaN, forms);
-
       assert.strictEqual(result, "jabłek");
     });
   });
@@ -53,21 +61,18 @@ describe("getPluralForm", () => {
     it("should return default plural form for a string", () => {
       // @ts-expect-error
       const result = getPluralForm("not a number", forms);
-
       assert.strictEqual(result, "jabłek");
     });
 
     it("should return default plural form for BigInt", () => {
       // @ts-expect-error
       const result = getPluralForm(BigInt(0), forms);
-
       assert.strictEqual(result, "jabłek");
     });
 
     it("should return default plural form for an object", () => {
       // @ts-expect-error
       const result = getPluralForm({}, forms);
-
       assert.strictEqual(result, "jabłek");
     });
   });
