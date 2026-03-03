@@ -15,10 +15,11 @@ export function getPluralForm(count: number, forms: PluralForms): string {
 
   const [form1, form2, form3] = forms;
 
-  const mod10 = count % 10;
-  const mod100 = count % 100;
+  const absCount = Math.abs(count);
+  const mod10 = absCount % 10;
+  const mod100 = absCount % 100;
 
-  if (mod10 === 1 && mod100 !== 11) {
+  if (absCount === 1) {
     return form1;
   }
 

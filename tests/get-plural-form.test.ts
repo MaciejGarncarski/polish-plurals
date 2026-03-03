@@ -31,6 +31,11 @@ describe("getPluralForm", () => {
       assert.strictEqual(result, "jabłek");
     });
 
+    it("should return correct plural form for 21", () => {
+      const result = getPluralForm(21, forms);
+      assert.strictEqual(result, "jabłek");
+    });
+
     it("should return correct plural form for 22", () => {
       const result = getPluralForm(22, forms);
       assert.strictEqual(result, "jabłka");
@@ -74,6 +79,39 @@ describe("getPluralForm", () => {
       // @ts-expect-error
       const result = getPluralForm({}, forms);
       assert.strictEqual(result, "jabłek");
+    });
+  });
+
+  describe("should handle numeric edge cases", () => {
+    it("should return plural form for teen boundaries", () => {
+      assert.strictEqual(getPluralForm(12, forms), "jabłek");
+      assert.strictEqual(getPluralForm(13, forms), "jabłek");
+      assert.strictEqual(getPluralForm(14, forms), "jabłek");
+    });
+
+    it("should return genitive plural for counts ending with 1 except 1 itself", () => {
+      assert.strictEqual(getPluralForm(21, forms), "jabłek");
+      assert.strictEqual(getPluralForm(31, forms), "jabłek");
+      assert.strictEqual(getPluralForm(101, forms), "jabłek");
+    });
+
+    it("should return plural form for hundreds ending with teen values", () => {
+      assert.strictEqual(getPluralForm(111, forms), "jabłek");
+      assert.strictEqual(getPluralForm(112, forms), "jabłek");
+      assert.strictEqual(getPluralForm(113, forms), "jabłek");
+      assert.strictEqual(getPluralForm(114, forms), "jabłek");
+    });
+
+    it("should return correct forms for negative numbers", () => {
+      assert.strictEqual(getPluralForm(-1, forms), "jabłko");
+      assert.strictEqual(getPluralForm(-2, forms), "jabłka");
+      assert.strictEqual(getPluralForm(-21, forms), "jabłek");
+    });
+
+    it("should return default form for decimal numbers", () => {
+      assert.strictEqual(getPluralForm(1.1, forms), "jabłek");
+      assert.strictEqual(getPluralForm(2.5, forms), "jabłka");
+      assert.strictEqual(getPluralForm(21.01, forms), "jabłek");
     });
   });
 

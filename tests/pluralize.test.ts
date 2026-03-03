@@ -5,6 +5,20 @@ import assert from "node:assert/strict";
 describe("pluralize", () => {
   const forms: PluralForms = ["samochód", "samochody", "samochodów"];
 
+  describe("should return correct pluralized string for negative numbers", () => {
+    it("should return correct pluralized string for -1", () => {
+      const result = pluralize(-1, forms);
+
+      assert.strictEqual(result, "-1 samochód");
+    });
+
+    it("should return correct pluralized string for -2", () => {
+      const result = pluralize(-2, forms);
+
+      assert.strictEqual(result, "-2 samochody");
+    });
+  });
+
   describe("should return correct pluralized string for various counts", () => {
     it("should return correct pluralized string for 0", () => {
       const result = pluralize(0, forms);
@@ -35,21 +49,39 @@ describe("pluralize", () => {
 
       assert.strictEqual(result, "11 samochodów");
     });
-  });
 
-  describe("should return default plural form for non-numeric counts", () => {
-    it("should return default plural form for a string", () => {
-      // @ts-expect-error
-      const result = pluralize("not a number", forms);
+    it("should return correct pluralized string for 22", () => {
+      const result = pluralize(22, forms);
 
-      assert.strictEqual(result, "not a number samochodów");
+      assert.strictEqual(result, "22 samochody");
     });
 
-    it("should return default plural form for BigInt", () => {
-      // @ts-expect-error
-      const result = pluralize(BigInt(10), forms);
+    it("should return correct pluralized string for 23", () => {
+      const result = pluralize(23, forms);
 
-      assert.strictEqual(result, "10 samochodów");
+      assert.strictEqual(result, "23 samochody");
+    });
+
+    it("should return correct pluralized string for 24", () => {
+      const result = pluralize(24, forms);
+
+      assert.strictEqual(result, "24 samochody");
+    });
+
+    describe("should return default plural form for non-numeric counts", () => {
+      it("should return default plural form for a string", () => {
+        // @ts-expect-error
+        const result = pluralize("not a number", forms);
+
+        assert.strictEqual(result, "not a number samochodów");
+      });
+
+      it("should return default plural form for BigInt", () => {
+        // @ts-expect-error
+        const result = pluralize(BigInt(10), forms);
+
+        assert.strictEqual(result, "10 samochodów");
+      });
     });
   });
 });

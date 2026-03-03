@@ -18,6 +18,7 @@
     }
   },
   "scripts": {
+    "build": "tsdown",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "test": "tsx --test",
