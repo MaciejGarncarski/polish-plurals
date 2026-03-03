@@ -1,6 +1,6 @@
 {
   "name": "@maciekdev/polish-plurals",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Polish pluralization helpers for selecting correct noun forms based on count.",
   "keywords": [
     "polish",
