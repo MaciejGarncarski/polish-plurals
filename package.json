@@ -1,9 +1,24 @@
 {
   "name": "@maciekdev/polish-plurals",
   "version": "0.0.4",
-  "description": "",
-  "keywords": [],
+  "description": "Polish pluralization helpers for selecting correct noun forms based on count.",
+  "keywords": [
+    "polish",
+    "plural",
+    "pluralization",
+    "i18n",
+    "localization",
+    "grammar"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejGarncarski/polish-plurals.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaciejGarncarski/polish-plurals/issues"
+  },
+  "homepage": "https://github.com/MaciejGarncarski/polish-plurals#readme",
   "author": {
     "name": "Maciej Garncarski",
     "email": "maciejgarncarski@protonmail.com",
@@ -27,6 +42,7 @@
     "build": "tsdown",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit",
     "test": "tsx --test",
     "test:coverage": "c8 --reporter=text --reporter=html npm test",
     "test:watch": "tsx --test --watch"
