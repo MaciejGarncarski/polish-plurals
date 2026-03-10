@@ -1,0 +1,61 @@
+{
+  "name": "@maciekdev/polish-plurals",
+  "version": "0.0.0",
+  "description": "Polish pluralization helpers for selecting correct noun forms based on count.",
+  "keywords": [
+    "grammar",
+    "i18n",
+    "localization",
+    "plural",
+    "pluralization",
+    "polish"
+  ],
+  "homepage": "https://github.com/MaciejGarncarski/polish-plurals#readme",
+  "bugs": {
+    "url": "https://github.com/MaciejGarncarski/polish-plurals/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Maciej Garncarski",
+    "email": "maciejgarncarski@protonmail.com",
+    "url": "https://github.com/maciejgarncarski"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejGarncarski/polish-plurals.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test",
+    "test:coverage": "c8 --reporter=text --reporter=html npm test",
+    "test:watch": "tsx --test --watch"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^25.3.3",
+    "c8": "^11.0.0",
+    "oxfmt": "^0.36.0",
+    "tsdown": "^0.20.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.30.3"
+}

@@ -1,0 +1,7 @@
+{
+  "all": true,
+  "extension": [".ts"],
+  "include": ["index.ts"],
+  "exclude": ["**/*.test.ts", "node_modules"],
+  "reporter": ["text", "html"]
+}
