@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup
+        with:
+          node-version: lts/*
 
       - name: Typecheck
         run: pnpm typecheck
@@ -47,6 +49,8 @@ jobs:
       - uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup
+        with:
+          node-version: lts/*
 
       - name: Build
         run: pnpm build
@@ -54,4 +58,4 @@ jobs:
       - name: Use Application Token to create a release
         run: pnpm dlx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
